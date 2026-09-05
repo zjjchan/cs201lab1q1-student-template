@@ -21,5 +21,51 @@ public class NumbersArray {
 
     // Write your methods here
     
+    public static int findMax(Integer[] input) {
+        int max = 0;
+        for (int n : input) {
+            if (n > max) {
+                max = n;
+            }
+        }
+
+        return max;
+    }
+
+    public static Integer[] findDuplicates(Integer[] input) {
+        HashMap<Integer, Integer> count = new HashMap<>();
+        ArrayList<Integer> dupes = new ArrayList<>();
+
+        for (int n : input) {
+            count.merge(n, 1, (oldVal, newVal) -> oldVal + 1);
+        }
+
+        for (Integer i : count.keySet()) {
+            if (count.get(i) > 1) {
+                dupes.add(i);
+            }
+        }
+
+        Integer[] dupesArr = dupes.toArray(new Integer[0]);
+        return dupesArr;
+    }
+
+    public static Integer[] findUnique(Integer[] input) {
+         HashMap<Integer, Integer> count = new HashMap<>();
+        ArrayList<Integer> uniques = new ArrayList<>();
+
+        for (int n : input) {
+            count.merge(n, 1, (oldVal, newVal) -> oldVal + 1);
+        }
+
+        for (Integer i : count.keySet()) {
+            if (count.get(i) == 1) {
+                uniques.add(i);
+            }
+        }
+
+        Integer[] uniquesArr = uniques.toArray(new Integer[0]);
+        return  uniquesArr;
+    }
 }
 
